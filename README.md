@@ -32,9 +32,12 @@ Add five CMakeLists.txt files (and more in the future) into the Redis project di
 
     redis/CMakeLists.txt
     redis/deps/CMakeLists.txt
-    redis/deps/hiredis/CMakeLists.txt
+    redis/src/modules/CMakeLists.txt
     redis/deps/linenoise/CMakeLists.txt
     redis/deps/lua/CMakeLists.txt
+Change the source file
+
+    redis/src/ae_kqueue.c
 
 the every CMakeLists.txt file content you can refer to this repo and branch: feature/add-cmakefiles,
 then you can debug the Redis process step by step in IDE (such as CLion)
