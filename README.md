@@ -28,20 +28,32 @@ The suite of CMake tools were created by Kitware in response to the need for a p
 Using CMake in Redis
 --------------
 
-Add five CMakeLists.txt files (and more in the future) into the Redis project dir:
+1.Add five CMakeLists.txt files (and more in the future) into the Redis project dir:
 
     redis/CMakeLists.txt
-    redis/deps/CMakeLists.txt
     redis/src/modules/CMakeLists.txt
+    redis/deps/CMakeLists.txt
     redis/deps/linenoise/CMakeLists.txt
     redis/deps/lua/CMakeLists.txt
-Change the source file
+2.Change the source file
 
-    redis/src/ae_kqueue.c
+    //modify: redis/src/ae_kqueue.c  add include files:
+    #include "ae.h"
+    #include "zmalloc.h"
 
 the every CMakeLists.txt file content you can refer to this repo and branch: feature/add-cmakefiles,
 then you can debug the Redis process step by step in IDE (such as CLion)
 
+3.shell command:
+
+    export  REDIS_SOURCE_CODE_PATH="Please change this string to your redis source code path"
+    cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" ${REDIS_SOURCE_CODE_PATH}
+    cmake --build ${REDIS_SOURCE_CODE_PATH}/cmake-build-debug --target redis-server -- -j 12
+    # This step lead to an error :ld: symbol(s) not found for architecture x86_64 clang: error: linker command failed with exit code 1 (use -v to see invocation)
+    # so We should play a trick to the linker
+    echo "set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -c")" >> ${REDIS_SOURCE_CODE_PATH}/CMakeLists.txt
+    # Then try again
+    cmake --build ${REDIS_SOURCE_CODE_PATH}/cmake-build-debug --target redis-server -- -j 12
 
 Condition
 --------------

@@ -10,7 +10,6 @@ set(CMAKE_BUILD_TYPE "Debug" CACHE STRING
 RelWithDebInfo and MinSizeRel.")
 
 #endif()
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -c")
 message(STATUS "Host is: ${CMAKE_HOST_SYSTEM}. Build target is:
 ${CMAKE_SYSTEM}")
 get_filename_component(REDIS_ROOT "${CMAKE_CURRENT_SOURCE_DIR}" ABSOLUTE)
@@ -168,3 +167,4 @@ link_directories(deps/hiredis/ deps/linenoise/ diredeps/lua/src)
 install(TARGETS redis-server
         RUNTIME DESTINATION bin
 )
+#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -c")
