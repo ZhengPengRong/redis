@@ -1,7 +1,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.4.0)
 INCLUDE(GNUInstallDirs)
 PROJECT(hiredis)
-
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")
 OPTION(ENABLE_SSL "Build hiredis_ssl for SSL support" OFF)
 OPTION(DISABLE_TESTS "If tests should be compiled or not" OFF)
 OPTION(ENABLE_SSL_TESTS, "Should we test SSL connections" OFF)

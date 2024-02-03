@@ -1,4 +1,4 @@
-C:\Users\G009175\AppData\Local\JetBrains\CLion2023.3\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/usr/bin/make.exe -DCMAKE_C_COMPILER=/usr/bin/gcc.exe -DCMAKE_CXX_COMPILER=/usr/bin/c++.exe -G "CodeBlocks - Unix Makefiles" -S /cygdrive/d/devp/zpr/c/redis -B /cygdrive/d/devp/zpr/c/redis/cmake-build-debug
+/home/zpr/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/usr/bin/gmake -DCMAKE_C_COMPILER=/usr/bin/cc -DCMAKE_CXX_COMPILER=/usr/bin/c++ -G "CodeBlocks - Unix Makefiles" -S /home/zpr/redis -B /home/zpr/redis/cmake-build-debug
 CMake Deprecation Warning:
   Support for "Extra Generators" like
 
@@ -16,25 +16,25 @@ CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
   CMake that the project does not need compatibility with older versions.
 
 
--- The C compiler identification is GNU 11.4.0
--- The CXX compiler identification is GNU 11.4.0
+-- The C compiler identification is GNU 4.8.5
+-- The CXX compiler identification is GNU 4.8.5
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
--- Check for working C compiler: /usr/bin/gcc.exe - skipped
+-- Check for working C compiler: /usr/bin/cc - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
 -- Detecting CXX compiler ABI info
 -- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: /usr/bin/c++.exe - skipped
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
-CMAKE_RUNTIME_OUTPUT_DIRECTORYis:/cygdrive/d/devp/zpr/c/redis/cmake-build-debug/../src
+CMAKE_RUNTIME_OUTPUT_DIRECTORYis:/home/zpr/redis/cmake-build-debug/../src
 -- No build type defined; defaulting to 'Debug'
--- Host is: CYGWIN-3.5.0-1.x86_64. Build target is:
-CYGWIN-3.5.0-1.x86_64
--- Project root directory is: /cygdrive/d/devp/zpr/c/redis
+-- Host is: Linux-3.10.0-862.el7.x86_64. Build target is:
+Linux-3.10.0-862.el7.x86_64
+-- Project root directory is: /home/zpr/redis
 -- Generating release.h...
-./mkreleasehdr.sh: line 15: syntax error: unexpected end of file
+#define REDIS_GIT_SHA1 "3877d7b6"
 CMake Deprecation Warning at deps/hiredis/CMakeLists.txt:1 (CMAKE_MINIMUM_REQUIRED):
   Compatibility with CMake < 3.5 will be removed from a future version of
   CMake.
@@ -43,9 +43,20 @@ CMake Deprecation Warning at deps/hiredis/CMakeLists.txt:1 (CMAKE_MINIMUM_REQUIR
   CMake that the project does not need compatibility with older versions.
 
 
-Detected version: ..
-CMake Error at deps/hiredis/CMakeLists.txt:23 (PROJECT):
-  VERSION ".." format invalid.
+Detected version: 1.0.0
+-- Configuring done (0.7s)
+CMake Error at CMakeLists.txt:140 (add_executable):
+  Cannot find source file:
+
+    src/mt19937-64.c
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm
+  .ccm .cxxm .c++m .h .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90
+  .f95 .f03 .hip .ispc
 
 
--- Configuring incomplete, errors occurred!
+CMake Error at CMakeLists.txt:140 (add_executable):
+  No SOURCES given to target: redis-server
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.

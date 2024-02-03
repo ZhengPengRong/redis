@@ -45,10 +45,10 @@ set(SRC_SERVER_TMP
         # windows屏蔽掉下面两个文件，mac系统不需要屏蔽，这两个是mac环境多路复用的库
         # /usr/local/include/event.h
         # src/ae_kqueue.c
-        src/mt19937-64.c
-        src/mt19937-64.h
-        src/monotonic.c
-        src/monotonic.h
+#        src/mt19937-64.c
+#        src/mt19937-64.h
+#        src/monotonic.c
+#        src/monotonic.h
         src/dict.c
         src/sds.c
         src/zmalloc.c

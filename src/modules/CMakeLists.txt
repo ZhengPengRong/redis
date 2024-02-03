@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.9)
 set(CMAKE_BUILD_TYPE "Debug")
-
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")
 add_library(helloworld SHARED helloworld.c)
 set_target_properties(helloworld PROPERTIES PREFIX "" SUFFIX ".so")
 
