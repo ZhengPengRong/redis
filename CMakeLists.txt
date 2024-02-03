@@ -42,8 +42,13 @@ set(SRC_SERVER_TMP
         src/adlist.c
         src/ae.c
         src/anet.c
-        /usr/local/include/event.h
-        src/ae_kqueue.c
+        # windows屏蔽掉下面两个文件，mac系统不需要屏蔽，这两个是mac环境多路复用的库
+        # /usr/local/include/event.h
+        # src/ae_kqueue.c
+        src/mt19937-64.c
+        src/mt19937-64.h
+        src/monotonic.c
+        src/monotonic.h
         src/dict.c
         src/sds.c
         src/zmalloc.c
@@ -113,7 +118,7 @@ set(SRC_SERVER_TMP
         src/listpack.c
         src/localtime.c
         src/gopher.c
-        )
+)
 set(SRC_SERVER src/server.c ${SRC_SERVER_TMP})
 set(SRC_CLI
         src/anet.c
@@ -127,7 +132,7 @@ set(SRC_CLI
         src/crc16.c
         src/dict.c
         src/siphash.c
-        )
+)
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     # better not to work with jemalloc
 endif()
@@ -144,25 +149,25 @@ target_include_directories(redis-server
         PRIVATE ${REDIS_ROOT}/deps/hiredis
         PRIVATE ${REDIS_ROOT}/deps/linenoise
         PRIVATE ${REDIS_ROOT}/deps/lua/src
-        )
+)
 target_include_directories(redis-cli
         PRIVATE ${REDIS_ROOT}/deps/hiredis
         PRIVATE ${REDIS_ROOT}/deps/linenoise
         PRIVATE ${REDIS_ROOT}/deps/lua/src
-        )
+)
 target_link_libraries(redis-server
         PRIVATE pthread
         PRIVATE m
         PRIVATE lua
         PRIVATE linenoise
         PRIVATE hiredis
-        )
+)
 target_link_libraries(redis-cli
         PRIVATE pthread
         PRIVATE m
         PRIVATE linenoise
         PRIVATE hiredis
-        )
+)
 link_directories(deps/hiredis/ deps/linenoise/ diredeps/lua/src)
 install(TARGETS redis-server
         RUNTIME DESTINATION bin
